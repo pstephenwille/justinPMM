@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<GridPane
+        alignment="center"
+        hgap="10"
+        vgap="10"
+        xmlns:fx="http://javafx.com/fxml/1"
+        xmlns="http://javafx.com/javafx/8"
+        fx:controller="com.graham.pomodoro.MainController">
+        <!--gridLinesVisible="true">-->
+
+    <columnConstraints>
+        <ColumnConstraints hgrow="NEVER" minWidth="100" maxWidth="100"/>
+        <ColumnConstraints hgrow="NEVER" minWidth="75" maxWidth="75"/>
+        <ColumnConstraints hgrow="NEVER" minWidth="200" maxWidth="200"/>
+    </columnConstraints>
+
+    <children>
+        <Label fx:id="label1" text="Work for:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+        <TextField fx:id="workText" text="25" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+        <ComboBox fx:id="workCombo" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+
+        <Label fx:id="label2" text="Break for:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="breakText" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <ComboBox fx:id="breakCombo" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+
+        <Label fx:id="error"
+               visible="false"
+               GridPane.halignment="CENTER"
+               GridPane.columnSpan="3"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="2"/>
+
+        <Label fx:id="time"
+               text="TIMER"
+               visible="false"
+               GridPane.columnSpan="3"
+               GridPane.columnIndex="0"
+               GridPane.rowSpan="3"
+               GridPane.rowIndex="0"
+               GridPane.halignment="CENTER"
+               GridPane.valignment="CENTER"/>
+
+        <Button
+                fx:id="start"
+                prefHeight="40"
+                prefWidth="250"
+                text="Start"
+                GridPane.halignment="CENTER"
+                GridPane.columnSpan="3"
+                GridPane.columnIndex="0"
+                GridPane.rowIndex="3"
+                onAction="#onStart"/>
+
+        <Button fx:id="pause"
+                text="Pause"
+                visible="false"
+                prefHeight="40"
+                prefWidth="125"
+                GridPane.halignment="LEFT"
+                GridPane.columnSpan="3"
+                GridPane.columnIndex="0"
+                GridPane.rowIndex="3"
+                onAction="#onPause"/>
+
+        <Button fx:id="resume"
+                text="Resume"
+                visible="false"
+                prefHeight="40"
+                prefWidth="125"
+                GridPane.halignment="LEFT"
+                GridPane.columnSpan="3"
+                GridPane.columnIndex="0"
+                GridPane.rowIndex="3"
+                onAction="#onResume"/>
+
+        <Button fx:id="restart"
+                text="Restart"
+                visible="false"
+                prefHeight="40"
+                prefWidth="125"
+                GridPane.halignment="CENTER"
+                GridPane.columnSpan="3"
+                GridPane.columnIndex="0"
+                GridPane.rowIndex="3"
+                onAction="#onRestart"/>
+
+        <Button fx:id="stop"
+                text="Stop"
+                visible="false"
+                prefHeight="40"
+                prefWidth="125"
+                GridPane.halignment="RIGHT"
+                GridPane.columnSpan="3"
+                GridPane.columnIndex="0"
+                GridPane.rowIndex="3"
+                onAction="#onStop"/>
+    </children>
+</GridPane>
