@@ -1,5 +1,7 @@
 package com.graham.pomodoro;
 
+import org.assertj.core.util.VisibleForTesting;
+
 import java.time.Duration;
 import java.time.temporal.TemporalUnit;
 
@@ -28,7 +30,8 @@ public class Timer {
         return convertToDoubleDigit(hours) + ":" + convertToDoubleDigit(mins) + ":" + convertToDoubleDigit(seconds);
     }
 
-    private String convertToDoubleDigit(Long time) {
+    @VisibleForTesting
+    protected String convertToDoubleDigit(Long time) {
         return (time.toString().length() <= 1) ? "0" + time : (time >= 60) ? "00" : time.toString();
     }
 }

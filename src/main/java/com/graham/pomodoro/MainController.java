@@ -9,11 +9,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.KeyEvent;
+import javafx.util.Callback;
 import javafx.util.Duration;
 
 import java.net.URL;
@@ -32,6 +30,7 @@ public class MainController implements Initializable {
     @FXML private TextField breakText;
     @FXML private ComboBox<ChronoUnit> workCombo;
     @FXML private ComboBox<ChronoUnit> breakCombo;
+    @FXML private Label title;
     @FXML private Label label1;
     @FXML private Label label2;
     @FXML private Label time;
@@ -48,9 +47,10 @@ public class MainController implements Initializable {
     private ChronoUnit selectedBreakUnit;
     private Timeline timeline;
 
-
     @Override
     public void initialize(URL location, ResourceBundle resources) {
+        this.title.setText(Main.TITLE);
+
         ObservableList<ChronoUnit> timeUnitsData = FXCollections.observableArrayList();
         timeUnitsData.addAll(ChronoUnit.SECONDS, ChronoUnit.MINUTES, ChronoUnit.HOURS);
 

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <GridPane
@@ -9,7 +10,7 @@
         xmlns:fx="http://javafx.com/fxml/1"
         xmlns="http://javafx.com/javafx/8"
         fx:controller="com.graham.pomodoro.MainController">
-        <!--gridLinesVisible="true">-->
+    <!--gridLinesVisible="true" >-->
 
     <columnConstraints>
         <ColumnConstraints hgrow="NEVER" minWidth="100" maxWidth="100"/>
@@ -18,20 +19,35 @@
     </columnConstraints>
 
     <children>
-        <Label fx:id="label1" text="Work for:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
-        <TextField fx:id="workText" text="25" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
-        <ComboBox fx:id="workCombo" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+        <Label fx:id="title"
+               GridPane.columnIndex="0"
+               GridPane.rowIndex="0"
+               GridPane.columnSpan="3">
+            <GridPane.margin>
+                <Insets bottom="0.0" left="-20.0" right="0.0" top="-40.0"/>
+            </GridPane.margin>
+        </Label>
 
-        <Label fx:id="label2" text="Break for:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <TextField fx:id="breakText" text="5" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
-        <ComboBox fx:id="breakCombo" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+        <Separator orientation="HORIZONTAL" prefWidth="600" GridPane.columnSpan="3">
+            <GridPane.margin>
+                <Insets bottom="0.0" left="-20.0" right="-20.0" top="0.0"/>
+            </GridPane.margin>
+        </Separator>
+
+        <Label fx:id="label1" text="Work for:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+        <TextField fx:id="workText" text="25" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <ComboBox fx:id="workCombo" prefWidth="180" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
+
+        <Label fx:id="label2" text="Break for:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+        <TextField fx:id="breakText" text="5" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <ComboBox fx:id="breakCombo" prefWidth="180" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
 
         <Label fx:id="error"
                visible="false"
                GridPane.halignment="CENTER"
                GridPane.columnSpan="3"
                GridPane.columnIndex="0"
-               GridPane.rowIndex="2"/>
+               GridPane.rowIndex="3"/>
 
         <Label fx:id="time"
                text="TIMER"
@@ -39,7 +55,7 @@
                GridPane.columnSpan="3"
                GridPane.columnIndex="0"
                GridPane.rowSpan="3"
-               GridPane.rowIndex="0"
+               GridPane.rowIndex="1"
                GridPane.halignment="CENTER"
                GridPane.valignment="CENTER"/>
 
@@ -51,7 +67,7 @@
                 GridPane.halignment="CENTER"
                 GridPane.columnSpan="3"
                 GridPane.columnIndex="0"
-                GridPane.rowIndex="3"
+                GridPane.rowIndex="4"
                 onAction="#onStart"/>
 
         <Button fx:id="pause"
@@ -62,7 +78,7 @@
                 GridPane.halignment="LEFT"
                 GridPane.columnSpan="3"
                 GridPane.columnIndex="0"
-                GridPane.rowIndex="3"
+                GridPane.rowIndex="4"
                 onAction="#onPause"/>
 
         <Button fx:id="resume"
@@ -73,7 +89,7 @@
                 GridPane.halignment="LEFT"
                 GridPane.columnSpan="3"
                 GridPane.columnIndex="0"
-                GridPane.rowIndex="3"
+                GridPane.rowIndex="4"
                 onAction="#onResume"/>
 
         <Button fx:id="restart"
@@ -84,7 +100,7 @@
                 GridPane.halignment="CENTER"
                 GridPane.columnSpan="3"
                 GridPane.columnIndex="0"
-                GridPane.rowIndex="3"
+                GridPane.rowIndex="4"
                 onAction="#onRestart"/>
 
         <Button fx:id="stop"
@@ -95,7 +111,7 @@
                 GridPane.halignment="RIGHT"
                 GridPane.columnSpan="3"
                 GridPane.columnIndex="0"
-                GridPane.rowIndex="3"
+                GridPane.rowIndex="4"
                 onAction="#onStop"/>
     </children>
 </GridPane>
