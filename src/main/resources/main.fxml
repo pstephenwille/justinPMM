@@ -4,6 +4,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <GridPane
+        fx:id="grid"
         alignment="center"
         hgap="10"
         vgap="10"
@@ -35,11 +36,11 @@
         </Separator>
 
         <Label fx:id="label1" text="Work for:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
-        <TextField fx:id="workText" text="25" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+        <TextField fx:id="workText" text="" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
         <ComboBox fx:id="workCombo" prefWidth="180" GridPane.columnIndex="2" GridPane.rowIndex="1"/>
 
         <Label fx:id="label2" text="Break for:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
-        <TextField fx:id="breakText" text="5" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+        <TextField fx:id="breakText" text="" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
         <ComboBox fx:id="breakCombo" prefWidth="180" GridPane.columnIndex="2" GridPane.rowIndex="2"/>
 
         <Label fx:id="error"

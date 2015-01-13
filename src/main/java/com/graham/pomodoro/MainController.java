@@ -10,10 +10,13 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.GridPane;
 import javafx.util.Callback;
 import javafx.util.Duration;
 
+import javax.swing.event.DocumentEvent;
 import java.net.URL;
 import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
@@ -26,6 +29,7 @@ public class MainController implements Initializable {
     };
 
     // UI Elements
+    @FXML private GridPane grid;
     @FXML private TextField workText;
     @FXML private TextField breakText;
     @FXML private ComboBox<ChronoUnit> workCombo;
@@ -60,8 +64,12 @@ public class MainController implements Initializable {
         this.breakCombo.setItems(timeUnitsData);
         this.breakCombo.getSelectionModel().select(1);
 
-        workText.addEventFilter(KeyEvent.KEY_TYPED, TWO_DIGIT_MAX);
-        breakText.addEventFilter(KeyEvent.KEY_TYPED, TWO_DIGIT_MAX);
+        workText.addEventFilter(KeyEvent.KEY_RELEASED, TWO_DIGIT_MAX);
+        breakText.addEventFilter(KeyEvent.KEY_RELEASED, TWO_DIGIT_MAX);
+        
+        grid.addEventFilter(KeyEvent.KEY_RELEASED, (e) -> {
+            if (e.getCode().equals(KeyCode.ENTER)) onStart(null);
+        });
     }
 
     // ActionEvent Functions
