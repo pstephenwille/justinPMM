@@ -1,7 +1,6 @@
 package com.graham.pomodoro;
 
 import javafx.application.Application;
-import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -20,6 +19,10 @@ public class Main extends Application {
     public static final String ICON = "pomodoro.png";
     public static final ClassLoader LOADER = Main.class.getClassLoader();
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage primaryStage) throws Exception {
         Scene scene = createScene(primaryStage);
@@ -32,10 +35,6 @@ public class Main extends Application {
         primaryStage.show();
     }
 
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     protected Scene createScene(Stage primaryStage) throws IOException {
         Parent parent = FXMLLoader.load(getResource(MAIN_FXML));
         Scene scene = new Scene(parent, 500, 300);
@@ -45,7 +44,7 @@ public class Main extends Application {
         return scene;
     }
 
-    protected URL getResource(String fileName) {
+    public static URL getResource(String fileName) {
         URL url = LOADER.getResource(fileName);
         if (url == null) throw new RuntimeException("Could not find " + fileName);
         return url;

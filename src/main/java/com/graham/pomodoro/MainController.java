@@ -8,7 +8,10 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -17,6 +20,7 @@ import javafx.util.Callback;
 import javafx.util.Duration;
 
 import javax.swing.event.DocumentEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
@@ -71,10 +75,32 @@ public class MainController implements Initializable {
             if (e.getCode().equals(KeyCode.ENTER)) onStart(null);
         });
     }
+    
+    public static void show() {
+        
+    }
 
     // ActionEvent Functions
 
     public void onStart(ActionEvent actionEvent) {
+        
+        // Put all this logic in some kind of system tray builder
+        // Init SystemTray (awt)
+        // Init Scene
+        // Init SystemTrayController (fxml)
+        // Load STC -> Scene
+        // Load Scene -> ST
+        try {
+            Parent parent = FXMLLoader.load(Main.getResource("systemTray.fxml"));
+            Scene scene = new Scene(parent);
+            // Add scene to system tray
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        
+        // Once system tray has been loaded set this Panes visibility to hidden
+        // You would need a static function to switch this
+
         selectedWorkTime = stringToInt(workText.getText());
         selectedWorkUnit = workCombo.getValue();
         selectedBreakTime = stringToInt(breakText.getText());
