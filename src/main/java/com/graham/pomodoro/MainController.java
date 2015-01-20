@@ -8,9 +8,7 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -20,12 +18,11 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 
-import java.io.IOException;
 import java.net.URL;
 import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable {
+public class MainController implements Initializable{
 
     public static final EventHandler<KeyEvent> TWO_DIGIT_MAX = event -> {
         if (!event.getCharacter().matches("\\d")) event.consume();
@@ -54,6 +51,8 @@ public class MainController implements Initializable {
     private Integer selectedBreakTime;
     private ChronoUnit selectedBreakUnit;
     private Timeline timeline;
+    public final ClassLoader LOADER = getClass().getClassLoader();
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -75,7 +74,11 @@ public class MainController implements Initializable {
             if (e.getCode().equals(KeyCode.ENTER)) onStart(null);
         });
     }
-
+    protected URL getResource(String fileName) {
+        URL url = LOADER.getResource(fileName);
+        if (url == null) throw new RuntimeException("Could not find " + fileName);
+        return url;
+    }
     // ActionEvent Functions
 
     public void onStart(ActionEvent actionEvent) {
@@ -93,8 +96,9 @@ public class MainController implements Initializable {
             error.setText("Times must be greater than 0");
             error.setVisible(true);
         }
-        Parent parent = FXMLLoader.load(getResource("systemTray.fxml"));
 
+        /* woot.minutes = 10 */
+        /* woot.show() */
     }
 
     public void onPause(ActionEvent actionEvent) {
