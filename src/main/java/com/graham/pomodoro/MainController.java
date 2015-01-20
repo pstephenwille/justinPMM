@@ -8,15 +8,19 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.control.*;
+import javafx.scene.Parent;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.util.Callback;
 import javafx.util.Duration;
 
-import javax.swing.event.DocumentEvent;
+import java.io.IOException;
 import java.net.URL;
 import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
@@ -89,6 +93,8 @@ public class MainController implements Initializable {
             error.setText("Times must be greater than 0");
             error.setVisible(true);
         }
+        Parent parent = FXMLLoader.load(getResource("systemTray.fxml"));
+
     }
 
     public void onPause(ActionEvent actionEvent) {
