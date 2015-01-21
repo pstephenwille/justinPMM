@@ -36,6 +36,9 @@ public class Main extends Application {
     }
 
     protected Scene createScene(Stage primaryStage) throws IOException {
+
+        Stage woot = FXMLLoader.load(LOADER.getResource(("systemTray.fxml")));
+
         Parent parent = FXMLLoader.load(getResource(MAIN_FXML));
         Scene scene = new Scene(parent, 500, 300);
         scene.getStylesheets().add(getResource(MAIN_CSS).toExternalForm());
