@@ -15,6 +15,7 @@ public class Main extends Application {
 
     public static final String TITLE = "Pomodoro Timer";
     public static final String MAIN_FXML = "main.fxml";
+    public static final String SYSTRAY_FXML = "systemTray.fxml";
     public static final String MAIN_CSS = "main.css";
     public static final String ICON = "pomodoro.png";
     public static final ClassLoader LOADER = Main.class.getClassLoader();
@@ -23,6 +24,13 @@ public class Main extends Application {
         launch(args);
     }
 
+    public static URL getResource(String fileName) {
+        URL url = LOADER.getResource(fileName);
+        if (url == null) throw new RuntimeException("Could not find " + fileName);
+        return url;
+    }
+
+    
     @Override
     public void start(Stage primaryStage) throws Exception {
         Scene scene = createScene(primaryStage);
@@ -36,21 +44,14 @@ public class Main extends Application {
     }
 
     protected Scene createScene(Stage primaryStage) throws IOException {
-
-        Stage woot = FXMLLoader.load(LOADER.getResource(("systemTray.fxml")));
-
         Parent parent = FXMLLoader.load(getResource(MAIN_FXML));
+        
         Scene scene = new Scene(parent, 500, 300);
         scene.getStylesheets().add(getResource(MAIN_CSS).toExternalForm());
         scene.setOnMousePressed(DraggableWindow.onMousePressed);
         scene.setOnMouseDragged(DraggableWindow.onMouseDragged(primaryStage));
-        return scene;
-    }
 
-    public static URL getResource(String fileName) {
-        URL url = LOADER.getResource(fileName);
-        if (url == null) throw new RuntimeException("Could not find " + fileName);
-        return url;
+        return scene;
     }
 
     protected Image getIcon() {

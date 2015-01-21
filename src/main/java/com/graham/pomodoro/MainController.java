@@ -12,14 +12,15 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.*;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import javafx.util.Callback;
 import javafx.util.Duration;
 
-import javax.swing.event.DocumentEvent;
 import java.io.IOException;
 import java.net.URL;
 import java.time.temporal.ChronoUnit;
@@ -28,32 +29,49 @@ import java.util.ResourceBundle;
 public class MainController implements Initializable {
 
     public static final EventHandler<KeyEvent> TWO_DIGIT_MAX = event -> {
-        if (!event.getCharacter().matches("\\d")) event.consume();
+        if (!event.getCharacter().matches("\\d")){ event.consume(); }
         if (((TextField) event.getSource()).getText().length() >= 2) event.consume();
     };
 
     // UI Elements
-    @FXML private GridPane grid;
-    @FXML private TextField workText;
-    @FXML private TextField breakText;
-    @FXML private ComboBox<ChronoUnit> workCombo;
-    @FXML private ComboBox<ChronoUnit> breakCombo;
-    @FXML private Label title;
-    @FXML private Label label1;
-    @FXML private Label label2;
-    @FXML private Label time;
-    @FXML private Label error;
-    @FXML private Button start;
-    @FXML private Button pause;
-    @FXML private Button resume;
-    @FXML private Button restart;
-    @FXML private Button stop;
+    @FXML
+    private GridPane grid;
+    @FXML
+    private TextField workText;
+    @FXML
+    private TextField breakText;
+    @FXML
+    private ComboBox<ChronoUnit> workCombo;
+    @FXML
+    private ComboBox<ChronoUnit> breakCombo;
+    @FXML
+    private Label title;
+    @FXML
+    private Label label1;
+    @FXML
+    private Label label2;
+    @FXML
+    private Label time;
+    @FXML
+    private Label error;
+    @FXML
+    private Button start;
+    @FXML
+    private Button pause;
+    @FXML
+    private Button resume;
+    @FXML
+    private Button restart;
+    @FXML
+    private Button stop;
 
     private Integer selectedWorkTime;
     private ChronoUnit selectedWorkUnit;
     private Integer selectedBreakTime;
     private ChronoUnit selectedBreakUnit;
     private Timeline timeline;
+
+
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -70,36 +88,36 @@ public class MainController implements Initializable {
 
         workText.addEventFilter(KeyEvent.KEY_RELEASED, TWO_DIGIT_MAX);
         breakText.addEventFilter(KeyEvent.KEY_RELEASED, TWO_DIGIT_MAX);
-        
+
         grid.addEventFilter(KeyEvent.KEY_RELEASED, (e) -> {
             if (e.getCode().equals(KeyCode.ENTER)) onStart(null);
         });
-    }
-    
-    public static void show() {
-        
     }
 
     // ActionEvent Functions
 
     public void onStart(ActionEvent actionEvent) {
-        
+
         // Put all this logic in some kind of system tray builder
         // Init SystemTray (awt)
         // Init Scene
         // Init SystemTrayController (fxml)
         // Load STC -> Scene
         // Load Scene -> ST
-        try {
-            Parent parent = FXMLLoader.load(Main.getResource("systemTray.fxml"));
-            Scene scene = new Scene(parent);
-            // Add scene to system tray
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        
+//        try {
+//            Parent parent = FXMLLoader.load(Main.getResource("systemTray.fxml"));
+////            Scene scene = new Scene(parent);
+//            // Add scene to system tray
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+
         // Once system tray has been loaded set this Panes visibility to hidden
         // You would need a static function to switch this
+
+        AppBroker.loadSysTray();
+        
+        
 
         selectedWorkTime = stringToInt(workText.getText());
         selectedWorkUnit = workCombo.getValue();
