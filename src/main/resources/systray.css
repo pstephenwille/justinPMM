@@ -1,0 +1,12 @@
+/* SYSTEM TRAY */
+#systrayPane{
+    -fx-background-color: #000000;
+    -fx-opacity: 0.8;
+    -fx-background-position: center;
+}
+#systrayPane > Label{
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12px;
+    -fx-opacity: 0.8;
+    -fx-alignment: center;
+}

@@ -22,7 +22,7 @@ import java.net.URL;
 import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
 
-public class MainController implements Initializable{
+public class MainController implements Initializable {
 
     public static final EventHandler<KeyEvent> TWO_DIGIT_MAX = event -> {
         if (!event.getCharacter().matches("\\d")) event.consume();
@@ -30,21 +30,40 @@ public class MainController implements Initializable{
     };
 
     // UI Elements
-    @FXML private GridPane grid;
-    @FXML private TextField workText;
-    @FXML private TextField breakText;
-    @FXML private ComboBox<ChronoUnit> workCombo;
-    @FXML private ComboBox<ChronoUnit> breakCombo;
-    @FXML private Label title;
-    @FXML private Label label1;
-    @FXML private Label label2;
-    @FXML private Label time;
-    @FXML private Label error;
-    @FXML private Button start;
-    @FXML private Button pause;
-    @FXML private Button resume;
-    @FXML private Button restart;
-    @FXML private Button stop;
+    @FXML
+    private GridPane grid;
+    @FXML
+    private TextField workText;
+    @FXML
+    private TextField breakText;
+
+
+    @FXML
+    private ComboBox<ChronoUnit> workCombo;
+    @FXML
+    private ComboBox<ChronoUnit> breakCombo;
+    @FXML
+    private Label title;
+    @FXML
+    private Label label1;
+    @FXML
+    private Label label2;
+    @FXML
+    private Label time;
+    @FXML
+    private Label error;
+    @FXML
+    private Button start;
+    @FXML
+    private Button pause;
+    @FXML
+    private Button resume;
+    @FXML
+    private Button restart;
+    @FXML
+    private Button stop;
+
+
 
     private Integer selectedWorkTime;
     private ChronoUnit selectedWorkUnit;
@@ -53,6 +72,16 @@ public class MainController implements Initializable{
     private Timeline timeline;
     public final ClassLoader LOADER = getClass().getClassLoader();
 
+//    private static String workTime;
+//    public static String getWorkTime(){
+//        
+//    }
+    
+    public ComboBox<ChronoUnit> getWorkCombo() { return workCombo; }
+    public void setWorkCombo(ComboBox<ChronoUnit> workCombo) { this.workCombo = workCombo; }
+
+    public ComboBox<ChronoUnit> getBreakCombo() { return breakCombo; }
+    public void setBreakCombo(ComboBox<ChronoUnit> breakCombo) { this.breakCombo = breakCombo; }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -69,16 +98,18 @@ public class MainController implements Initializable{
 
         workText.addEventFilter(KeyEvent.KEY_RELEASED, TWO_DIGIT_MAX);
         breakText.addEventFilter(KeyEvent.KEY_RELEASED, TWO_DIGIT_MAX);
-        
+
         grid.addEventFilter(KeyEvent.KEY_RELEASED, (e) -> {
             if (e.getCode().equals(KeyCode.ENTER)) onStart(null);
         });
     }
-    protected URL getResource(String fileName) {
-        URL url = LOADER.getResource(fileName);
-        if (url == null) throw new RuntimeException("Could not find " + fileName);
-        return url;
-    }
+//    protected URL getResource(String fileName) {
+//        URL url = LOADER.getResource(fileName);
+//        if (url == null) throw new RuntimeException("Could not find " + fileName);
+//        return url;
+//    }
+
+
     // ActionEvent Functions
 
     public void onStart(ActionEvent actionEvent) {
