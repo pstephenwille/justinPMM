@@ -40,6 +40,7 @@ public class SystemTrayController implements Initializable {
 
         buildSystemTray();
         
+        
         buildPopupMenus();
 
         trayIcon = new TrayIcon(buffTrayIcon, "PomodoroMM", popup);
@@ -62,6 +63,8 @@ public class SystemTrayController implements Initializable {
 
         Scene trayScene = new Scene(systrayPane, null);
 //        systrayDigits.setText(MainController.getWorkTime());
+        
+        
         trayScene.getStylesheets().add(getClass().getClassLoader().getResource("systray.css").toExternalForm());
 
         buffTrayIcon = new BufferedImage(width.intValue(), height.intValue(), 2);

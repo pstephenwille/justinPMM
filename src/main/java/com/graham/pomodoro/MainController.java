@@ -74,14 +74,17 @@ public class MainController implements Initializable {
 
 //    private static String workTime;
 //    public static String getWorkTime(){
-//        
+//        getWorkCombo();
+//        return workTime;
 //    }
-    
-    public ComboBox<ChronoUnit> getWorkCombo() { return workCombo; }
-    public void setWorkCombo(ComboBox<ChronoUnit> workCombo) { this.workCombo = workCombo; }
-
-    public ComboBox<ChronoUnit> getBreakCombo() { return breakCombo; }
-    public void setBreakCombo(ComboBox<ChronoUnit> breakCombo) { this.breakCombo = breakCombo; }
+//
+//    public ComboBox<ChronoUnit> getWorkCombo() {
+//        workTime = workCombo.toString();
+//        return workCombo; }
+//    public void setWorkCombo(ComboBox<ChronoUnit> workCombo) { this.workCombo = workCombo; }
+//
+//    public ComboBox<ChronoUnit> getBreakCombo() { return breakCombo; }
+//    public void setBreakCombo(ComboBox<ChronoUnit> breakCombo) { this.breakCombo = breakCombo; }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
