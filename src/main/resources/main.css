@@ -13,7 +13,6 @@
 .text-field {
     -fx-max-width: 80px;
 }
-
 #title {
     -fx-font-size: 30;
     -fx-alignment: center-right;
