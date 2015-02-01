@@ -26,6 +26,7 @@ public class SystemTrayController implements Initializable {
     private static ActionListener listener;
     private static BufferedImage buffTrayIcon;
 
+    private static MainController Form = new MainController();
     @FXML
     private StackPane systrayPane;
     @FXML
@@ -37,6 +38,7 @@ public class SystemTrayController implements Initializable {
         if ( (!SystemTray.isSupported()) || (sysTray != null) ) {
             return;
         }
+        
 
         buildSystemTray();
         
@@ -62,9 +64,8 @@ public class SystemTrayController implements Initializable {
         WritableImage image = new WritableImage(width.intValue(), height.intValue());
 
         Scene trayScene = new Scene(systrayPane, null);
-//        systrayDigits.setText(MainController.getWorkTime());
-        
-        
+//        systrayDigits.setText(Form.getWorkCombo().toString());
+
         trayScene.getStylesheets().add(getClass().getClassLoader().getResource("systray.css").toExternalForm());
 
         buffTrayIcon = new BufferedImage(width.intValue(), height.intValue(), 2);

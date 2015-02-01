@@ -23,6 +23,7 @@ public class Main extends Application {
     
     protected static Stage primaryStage;
 
+    public static Parent parent;
     public static void main(String[] args) {
         launch(args);
     }
@@ -44,7 +45,7 @@ public class Main extends Application {
 
 
     protected Scene createFormScene(Stage primaryStage) throws IOException {
-        Parent parent = FXMLLoader.load(getResource(MAIN_FXML));
+        parent = FXMLLoader.load(getResource(MAIN_FXML));
         Scene scene = new Scene(parent, 500, 300);
         scene.getStylesheets().add(getResource(MAIN_CSS).toExternalForm());
         scene.setOnMousePressed(DraggableWindow.onMousePressed);

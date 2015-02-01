@@ -38,6 +38,14 @@ public class MainController implements Initializable {
     private TextField breakText;
 
 
+    public ComboBox<ChronoUnit> getWorkCombo() {
+        return workCombo;
+    }
+
+    public void setWorkCombo(ComboBox<ChronoUnit> workCombo) {
+        this.workCombo = workCombo;
+    }
+
     @FXML
     private ComboBox<ChronoUnit> workCombo;
     @FXML
@@ -85,6 +93,9 @@ public class MainController implements Initializable {
 //
 //    public ComboBox<ChronoUnit> getBreakCombo() { return breakCombo; }
 //    public void setBreakCombo(ComboBox<ChronoUnit> breakCombo) { this.breakCombo = breakCombo; }
+
+
+    public MainController() {}
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
