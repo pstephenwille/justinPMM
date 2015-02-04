@@ -16,24 +16,24 @@ import java.net.URL;
 public class Main extends Application {
 
     public static final String TITLE = "Pomodoro Timer";
-    public static final String MAIN_FXML = "main.fxml";
-    public static final String MAIN_CSS = "main.css";
+//    public static final String MAIN_FXML = "main.fxml";
+//    public static final String MAIN_CSS = "main.css";
     public static final String ICON = "pomodoro.png";
     public static final ClassLoader LOADER = Main.class.getClassLoader();
     
-    protected static Stage primaryStage;
+//    protected static Stage primaryStage;
 
-    public static Parent parent;
+//    public static Parent parent;
     public static void main(String[] args) {
         launch(args);
     }
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-        this.primaryStage = primaryStage;
+//        this.primaryStage = primaryStage;
 
-        Scene scene = createFormScene(primaryStage);
-
+        Scene scene = CommandBroker.getMainScene(primaryStage);
+        
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.UNDECORATED);
         primaryStage.getIcons().add(getIcon());
@@ -43,20 +43,21 @@ public class Main extends Application {
 
     }
 
+    
 
-    protected Scene createFormScene(Stage primaryStage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader();
-        parent = fxmlLoader.load(getResource(MAIN_FXML).openStream());
-        MainController controller = (MainController) fxmlLoader.getController();
-        CommandBroker.setMainController(controller);
-        
-        Scene scene = new Scene(parent, 500, 300);
-        scene.getStylesheets().add(getResource(MAIN_CSS).toExternalForm());
-        scene.setOnMousePressed(DraggableWindow.onMousePressed);
-        scene.setOnMouseDragged(DraggableWindow.onMouseDragged(primaryStage));
-        
-        return scene;
-    }
+//    protected Scene createFormScene(Stage primaryStage) throws IOException {
+//        FXMLLoader fxmlLoader = new FXMLLoader();
+//        parent = fxmlLoader.load(getResource(MAIN_FXML).openStream());
+//        MainController controller = (MainController) fxmlLoader.getController();
+//        CommandBroker.setMainController(controller);
+//        
+//        Scene scene = new Scene(parent, 500, 300);
+//        scene.getStylesheets().add(getResource(MAIN_CSS).toExternalForm());
+//        scene.setOnMousePressed(DraggableWindow.onMousePressed);
+//        scene.setOnMouseDragged(DraggableWindow.onMouseDragged(primaryStage));
+//        
+//        return scene;
+//    }
 
 //    protected void createSystemTray() throws IOException {
 //        SystemTray systray = SystemTray.getSystemTray();
@@ -66,14 +67,14 @@ public class Main extends Application {
 //        systrayPane.setMinWidth(systray.getTrayIconSize().getWidth());
 //    }
 
-    protected void createBreakScenes() {
-        
-    }
-    protected URL getResource(String fileName) {
-        URL url = LOADER.getResource(fileName);
-        if (url == null) throw new RuntimeException("Could not find " + fileName);
-        return url;
-    }
+//    protected void createBreakScenes() {
+//        
+//    }
+//    protected URL getResource(String fileName) {
+//        URL url = LOADER.getResource(fileName);
+//        if (url == null) throw new RuntimeException("Could not find " + fileName);
+//        return url;
+//    }
 
     protected Image getIcon() {
         return new Image(LOADER.getResourceAsStream(ICON));

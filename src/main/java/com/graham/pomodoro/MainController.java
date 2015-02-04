@@ -144,7 +144,7 @@ public class MainController implements Initializable {
         }
 
         try {
-            CommandBroker.createSystemTray(selectedWorkTime, selectedWorkUnit);
+            CommandBroker.createSystemTray();
         } catch (IOException e) {
             e.printStackTrace();
         }
