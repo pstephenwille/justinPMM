@@ -18,6 +18,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.temporal.ChronoUnit;
 import java.util.ResourceBundle;
@@ -142,8 +143,11 @@ public class MainController implements Initializable {
             error.setVisible(true);
         }
 
-        /* woot.minutes = 10 */
-        /* woot.show() */
+        try {
+            CommandBroker.createSystemTray(selectedWorkTime, selectedWorkUnit);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void onPause(ActionEvent actionEvent) {

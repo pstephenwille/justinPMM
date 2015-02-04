@@ -33,7 +33,6 @@ public class Main extends Application {
         this.primaryStage = primaryStage;
 
         Scene scene = createFormScene(primaryStage);
-        createSystemTray();
 
         primaryStage.setScene(scene);
         primaryStage.initStyle(StageStyle.UNDECORATED);
@@ -41,11 +40,16 @@ public class Main extends Application {
         primaryStage.setTitle(TITLE);
         primaryStage.setResizable(false);
         primaryStage.show();
+
     }
 
 
     protected Scene createFormScene(Stage primaryStage) throws IOException {
-        parent = FXMLLoader.load(getResource(MAIN_FXML));
+        FXMLLoader fxmlLoader = new FXMLLoader();
+        parent = fxmlLoader.load(getResource(MAIN_FXML).openStream());
+        MainController controller = (MainController) fxmlLoader.getController();
+        CommandBroker.setMainController(controller);
+        
         Scene scene = new Scene(parent, 500, 300);
         scene.getStylesheets().add(getResource(MAIN_CSS).toExternalForm());
         scene.setOnMousePressed(DraggableWindow.onMousePressed);
@@ -54,13 +58,13 @@ public class Main extends Application {
         return scene;
     }
 
-    protected void createSystemTray() throws IOException {
-        SystemTray systray = SystemTray.getSystemTray();
-        
-        StackPane systrayPane = FXMLLoader.load(LOADER.getResource(("systemTray.fxml")));
-        systrayPane.setMinHeight(systray.getTrayIconSize().getHeight());
-        systrayPane.setMinWidth(systray.getTrayIconSize().getWidth());
-    }
+//    protected void createSystemTray() throws IOException {
+//        SystemTray systray = SystemTray.getSystemTray();
+//
+//        StackPane systrayPane = FXMLLoader.load(LOADER.getResource(("systemTray.fxml")));
+//        systrayPane.setMinHeight(systray.getTrayIconSize().getHeight());
+//        systrayPane.setMinWidth(systray.getTrayIconSize().getWidth());
+//    }
 
     protected void createBreakScenes() {
         
